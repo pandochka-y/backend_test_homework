@@ -1,22 +1,54 @@
-# импортируйте библиотеку math
-import math
-
-class Planet:
-    def __init__(self, name, radius, temp_celsius):
+class Human:
+    def __init__(self, name):
         self.name = name
-        self.surface_area = round(4*math.pi*math.sqrt(radius))
-        self.average_temp_celcius = temp_celsius
-        self.average_temp_fahrenheit = round((temp_celsius*9/5)+32)
+
+    # ответ по умолчанию для всех одинаковый, можно
+
+    # доверить его родительскому классу
+
+    def answer_question(self, question):
+
+        print('Очень интересный вопрос! Не знаю')
 
 
-    def show_info(self):
-        print(f"Планета {self.name} имеет площадь поверхности {self.surface_area} кв.км.")
+class Student(Human):
+    #  метод ask_question() принимает параметр someone:
+    def ask_question(Human, someone, question):
+        print(f'{someone}, {question}')
+    #  это объект, экземпляр класса Curator, Mentor или CodeReviewer,
+    #  которому Student задаёт вопрос;
+    #  параметр question — это просто строка
+    #  имя объекта и текст вопроса задаются при вызове метода ask_question
 
-        print(f"Средняя температура поверхности планеты: {self.average_temp_fahrenheit}° по Фаренгейту.")
+        # запросите ответ на вопрос у someone
+        print()  # этот print выводит разделительную пустую строку
+        super().answer_question()
 
 
 
-jupiter = Planet('Юпитер', 69911, -108)
 
-# вызовите метод show_info для Юпитера
-jupiter.show_info()
+class Curator(Human):
+    def answer_question(self, question):
+        for i in question:
+
+        # здесь нужно проверить, пришёл куратору знакомый вопрос или нет
+        # если да - ответить на него
+        # если нет - вызвать метод answer_question() у родительского класса
+
+
+# объявите и реализуйте классы CodeReviewer и Mentor
+# следующий код менять не нужно, он работает, мы проверяли
+
+student1 = Student('Тимофей')
+curator = Curator('Марина')
+mentor = Mentor('Ира')
+reviewer = CodeReviewer('Евгений')
+
+
+friend = Human('Виталя')
+student1.ask_question(curator, 'мне грустненько, что делать?')
+student1.ask_question(mentor, 'мне грустненько, что делать?')
+student1.ask_question(reviewer, 'когда каникулы?')
+student1.ask_question(reviewer, 'что не так с моим проектом?')
+student1.ask_question(friend, 'как устроиться на работу питонистом?')
+student1.ask_question(mentor, 'как устроиться работать питонистом?')
